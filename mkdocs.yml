@@ -470,6 +470,7 @@ nav:
             - "-XX:[+|-]TransparentHugePage"                                     : xxtransparenthugepage.md
             - "-XX:[+|-]UseCompressedOops"                                       : xxusecompressedoops.md
             - "-XX:[+|-]UseContainerSupport"                                     : xxusecontainersupport.md
+            - "-XX:[+|-]UseDebugLocalMap"                                        : xxdebuglocalmap.md
             - "-XX:[+|-]UseGCStartupHints"                                       : xxusegcstartuphints.md
             - "-XX:[+|-]UseJITServer"                                            : xxusejitserver.md
             - "-XX:[+|-]UseNoGC"                                                 : xxusenogc.md
@@ -501,5 +502,6 @@ nav:
         - "Java 17 API"                                                           : api-jdk17.md
         - "Java 21 API"                                                           : api-jdk21.md
         - "Java 25 API"                                                           : api-jdk25.md
+        - "Java 26 API"                                                           : api-jdk26.md
 
     - "Legal"                                                                     : legal.md

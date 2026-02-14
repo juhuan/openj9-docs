@@ -26,6 +26,7 @@
 The following new features and notable changes since version 0.57.0 are included in this release:
 
 - [New binaries and changes to supported environments](#binaries-and-supported-environments)
+- [New `-XX:[+|-]UseDebugLocalMap` option is added](#new-xx-usedebuglocalmap-option-is-added)
 - ![Start of content that applies to Java 26 and later](cr/java26plus.png) [New JDK 26 features](#new-jdk-26-features) ![End of content that applies to Java 26 and later](cr/java_close.png)
 
 ## Features and changes
@@ -37,6 +38,12 @@ Eclipse OpenJ9&trade; release 0.58.0 supports OpenJDK 26.
 OpenJDK 26 with Eclipse OpenJ9 is *not* a long term support (LTS) release.
 
 To learn more about support for OpenJ9 releases, including OpenJDK levels and platform support, see [Supported environments](openj9_support.md).
+
+### New `-XX:[+|-]UseDebugLocalMap` option is added
+
+With the new option, `-XX:+UseDebugLocalMap`, you can now enable the debug local mapper without running the entire VM in the debug mode. Earlier this was not possible which significantly impacted performance.
+
+For more information, see [`-XX:[+|-]UseDebugLocalMap`](xxusedebuglocalmap.md).
 
 ### ![Start of content that applies to Java 26 and later](cr/java26plus.png) New JDK 26 features
 
