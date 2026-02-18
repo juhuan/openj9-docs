@@ -93,7 +93,7 @@ For more information, see [`-XX:[+|-]ShareOrphans`](xxshareorphans.md).
 
 From this release onwards, the default behavior of the client when it uses the JITServer AOT cache is to bypass its local shared classes cache (if one is set up) during JITServer AOT cache compilations. You can control how the JITServer AOT cache feature interacts with the local cache at JITServer client VMs with the [`-XX:[+|-]JITServerAOTCacheIgnoreLocalSCC`](xxjitserveraotcacheignorelocalscc.md) option.
 
-### ![Java 11 (LTS) and later](docs/cr/java11plus.png) New `-XdynamicHeapAdjustment` option added
+### ![Java 11 (LTS) and later](cr/java11plus.png) New `-XdynamicHeapAdjustment` option added
 
 By default, if a checkpoint is taken in a container with no memory limits and then restored in a container with memory limits, the restored VM instance does not detect the memory limits.
 

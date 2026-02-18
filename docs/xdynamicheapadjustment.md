@@ -25,7 +25,7 @@
 
 **Linux&reg; on x86, Linux on IBM Power&reg; systems, Linux on AArch64 and Linux on IBM Z&reg; systems (64-bit only)**
 
-![Java 11 (LTS) and later](docs/cr/java11plus.png) This option enables a VM capability that automatically adjusts the maximum Java heap size ([`-Xmx`](xms.md)) and minimum Java heap size ([`-Xms`](xms.md)) values such that they are within the physical memory limitations on the system.
+![Java 11 (LTS) and later](cr/java11plus.png) This option enables a VM capability that automatically adjusts the maximum Java heap size ([`-Xmx`](xms.md)) and minimum Java heap size ([`-Xms`](xms.md)) values such that they are within the physical memory limitations on the system.
 
 ## Syntax
 
