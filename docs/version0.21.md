@@ -54,7 +54,7 @@ API documentation that applies to OpenJ9 can now be found in this user documenta
 
 ### Performance improvements
 
-- If the [-Xtune:virtualized](xtunevirtualized.md) command line option is used, the default JIT scratch memory limit is now reduced from 256 MB to 16 MB. This reduces the peak from JIT compilation activity, allowing you to size containers more easily, based on the particular application's memory usage.
+- If the [-Xtune:virtualized](xtune.md#virtualized) command line option is used, the default JIT scratch memory limit is now reduced from 256 MB to 16 MB. This reduces the peak from JIT compilation activity, allowing you to size containers more easily, based on the particular application's memory usage.
 
 - If the JIT is running in a container and no swap space is defined, the JIT dynamically adjusts its scratch memory consumption based on the amount of free physical memory available, to avoid out-of-memory (OOM) occurrences.
 

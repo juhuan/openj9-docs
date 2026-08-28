@@ -45,7 +45,7 @@ Creation of system (core) dumps on macOS 12 or later is now possible.
 
 The new `-Xtune:throughput` option added in this release is used to increase resource utilization to maximize throughput.
 
-For more information, see [`-Xtune'](xtune.md).
+For more information, see [`-Xtune'](xtune.md#throughput).
 
 ## Known problems and full release information
 
