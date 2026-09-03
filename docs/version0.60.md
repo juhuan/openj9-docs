@@ -30,6 +30,7 @@ The following new features and notable changes since version 0.59.0 are included
 - [Compiler changes for Linux AArch64 64-bit](#compiler-changes-for-linux-aarch64-64-bit)
 - ![Start of content that applies to Java 11 (LTS) and later](cr/java11plus.png) [New JDK Flight Recorder (JFR) events are added in this release](#new-jdk-flight-recorder-jfr-events-are-added-in-this-release) ![End of content that applies only to Java 11 and later](cr/java_close.png)
 - [New parameter `footprint` added to the `-Xtune` command-line option](#new-parameter-footprint-added-to-the-xtune-command-line-option)
+- [`getLockedSynchronizers=true` parameter now triggers a global GC](#getlockedsynchronizerstrue-parameter-now-triggers-a-global-gc)
 
 ## Features and changes
 
@@ -67,6 +68,16 @@ For more information, see [`-XX:[+|-]FlightRecorder`](xxflightrecorder.md). ![En
 The new `-Xtune:footprint` option added in this release is used to optimize Eclipse OpenJ9 VM function by minimizing OpenJ9 VM memory usage.
 
 For more information, see [`-Xtune'](xtune.md).
+
+### `getLockedSynchronizers=true` parameter now triggers a global GC
+
+Before the 0.60.0 release, OpenJ9 maintained an internal locked-synchronizer list that was updated continuously during garbage collection (GC) cycles. Calling `ThreadMXBean.getThreadInfo()` or `ThreadMXBean.dumpAllThreads()` with `lockedSynchronizers=true` was therefore instantaneous with no GC side effect.
+
+Starting with the 0.60.0 release, the continuously maintained list is removed. When locked-synchronizer information is requested for, OpenJ9 rebuilds the list on demand from the live heap. If the heap is not already in a walkable state, a global stop-the-world (STW) GC with compaction is triggered. This GC event appears in `-verbose:gc` output with `reason="rasdump"`.
+
+Monitoring and Application performance management (APM) tools that poll thread state at regular intervals by using `lockedSynchronizers=true` (for example, IBM HealthCenter) will now observe periodic GC compaction events. Depending on heap size and polling frequency, these periodic GC compaction events can cause noticeable GC pauses.
+
+For more information, see [Language management interface](interface_lang_management.md).
 
 ## Known problems and full release information
 

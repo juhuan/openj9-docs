@@ -256,7 +256,7 @@ The scavenge GC operation is recorded by the `<gc-op>` element; child elements r
 </gc-op>
 ```
 
-The `<memory-copied>` element indicates that 5.75 MB (6,027,440B) of reachable objects were moved by the scavenge operation from the allocate space to the survivor space in the nursery area, and 0.54 MB(562,848 B) were moved to the tenure area.
+The `<memory-copied>` element indicates that 5.75 MB (6,027,440B) of reachable objects were moved by the scavenge operation from the allocate space to the survivor space in the nursery area, and 0.54 MB (562,848 B) were moved to the tenure area.
 
 The `<scavenger-info>` element shows that the *tenure age* is set to `7`. Any object in the allocate space with an age less than or equal to `7` is copied to the survivor space during this `scavenge`operation. Any object that is copied between the allocate and survivor areas more than `7` times is moved to the tenure area.
 
@@ -1473,6 +1473,15 @@ If the `balanced` global cycle is triggered during a [`balanced` global mark GC 
 If the `balanced` global cycle is not triggered during a `balanced` global mark cycle, the global cycle is recorded as a new cycle by using the `<cycle-start>` element.
 
 The element `<sys-start reason="explicit">` is used in the logs to record a cycle that was triggered explicitly rather than by the garbage collector. For example, the trigger reason is recorded as `explicit` if a cycle is triggered by an application calling `System.gc()`. For more information about explicitly or implicitly triggering a GC cycle, see [Garbage collection](gc_overview.md).
+
+Similarly, the element `<sys-start reason="rasdump">` is used in the logs to record a cycle that was triggered by a diagnostic facility that requires the heap to be in a walkable state. For example, producing a heap dump or calling `ThreadMXBean.getThreadInfo()` or `ThreadMXBean.dumpAllThreads()` with `lockedSynchronizers=true` can trigger this cycle. The `<compact-info>` element for such a cycle also carries `reason="rasdump"`.
+
+```
+<sys-start reason="rasdump" id="..." timestamp="2024-01-15T10:22:31.456" intervalms="30014.123" />
+<compact-info movecount="5123456" movebytes="104857600" reason="rasdump" />
+```
+
+For more information about the performance impact of querying locked synchronizers and how to avoid unnecessary GC pauses, see [Language management interface](interface_lang_management.md#threadmxbean-and-locked-synchronizers).
 
 The global cycle operations run as a single GC increment during an STW pause.
 
